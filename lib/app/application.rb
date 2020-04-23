@@ -29,9 +29,9 @@ class Application
         puts "DRAW!!!"
       else
         if !game.players[0].status
-          puts "Congratulations #{game.players[0].name}! ypu won"
+          puts "Congratulations #{game.players[0].name}! you won"
         else
-          puts "Congratulations #{game.players[1].name}! ypu won"
+          puts "Congratulations #{game.players[1].name}! you won"
         end
       end
 
