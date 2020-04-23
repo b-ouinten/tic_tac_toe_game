@@ -49,6 +49,7 @@ class Game
   def a_player_is_playing
     players.each { |player|
       if player.is_it_my_turn?
+        puts "---------------------------------------------------------------------"
         puts "It's your turn #{player.name}"
         begin
           print "On which cell you want put your token (A1 A2 A3 B1 B2 B3 C1 C2 C3)> "
@@ -57,8 +58,7 @@ class Game
         end while (cell != 'A1' && cell != 'A2' && cell != 'A3' && cell != 'B1' && cell != 'B2' && cell != 'B3' && cell != 'C1' && cell != 'C2' && cell != 'C3')
 
         # --- Put a token in grid ---
-        player.take_new_token
-        put_token_in_grid(player.new_token, cell)
+        put_token_in_grid(player.token, cell)
       end
 
       # --- Switch player status ---
@@ -72,6 +72,12 @@ class Game
 
   private
   def put_token_in_grid(token, cell)
-    @grid.content[cell] = token
+    if @grid.content[cell[0]][cell[1]].symbol == ''
+      @grid.content[cell[0]][cell[1]] = token
+    else
+      puts "There is already a token in this cell!"
+      puts "Press enter to continue ..."
+      gets
+    end
   end
 end

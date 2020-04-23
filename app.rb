@@ -9,7 +9,4 @@ require 'app/token'
 require 'app/application'
 require 'view/show'
 
-app = Application.new
-app.main
-
-binding.pry
+app = Application.new.main
