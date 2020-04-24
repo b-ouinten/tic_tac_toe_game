@@ -2,25 +2,30 @@ class Grid
   attr_accessor :content, :content_to_matrix
   
   def initialize()
-    @content = {"A"=>{ "1" => Token.new(''), "2" => Token.new(''), "3" => Token.new('')},
-    "B"=>{ "1" => Token.new(''), "2" => Token.new(''), "3" => Token.new('')},
-    "C"=>{ "1" => Token.new(''), "2" => Token.new(''), "3" => Token.new('')}}
+    @content = {"A"=>{ "1" => Token.new(Ssymbol.new('')), "2" => Token.new(Ssymbol.new('')), "3" => Token.new(Ssymbol.new(''))},
+                "B"=>{ "1" => Token.new(Ssymbol.new('')), "2" => Token.new(Ssymbol.new('')), "3" => Token.new(Ssymbol.new(''))},
+                "C"=>{ "1" => Token.new(Ssymbol.new('')), "2" => Token.new(Ssymbol.new('')), "3" => Token.new(Ssymbol.new(''))}}
     @content_to_matrix = []
   end
   
   def is_being_filled?
     @content.each_value { |v| 
       v.each_value {
-        |vs| return false if vs.symbol == ''
+        |vs| return false if vs.symbol.character == ''
       }
     }
     true
   end
   
-  
   def has_tokens_aligned?
     to_matrix
     ary = @content_to_matrix.map(&:clone)
+    ary.map! { |v|      
+      v.map! { |vs|
+        vs.symbol
+      }
+    }
+
     rows = ary
     columns = ary.transpose
     diagonal1 = []

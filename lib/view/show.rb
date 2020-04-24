@@ -6,8 +6,8 @@ class Show
   end
 
   def show_grid
-    # system "clear"
-    puts "-" * 50
+    system "clear"
+    puts "-" * 12
     puts "Next round : "
     puts
     puts "     1    2    3  "
@@ -16,7 +16,7 @@ class Show
     rows_labels = ['A', 'B', 'C']
     @grid.content.each_value { |v|
       print(" ", rows_labels[i], " ")
-      v.each_value{ |vs| print("|", vs.symbol.center(3) , "|") }
+      v.each_value{ |vs| print("|", vs.symbol.character.center(3) , "|") }
       print("\n   |-------------|\n")
       i += 1
     }

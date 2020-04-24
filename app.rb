@@ -6,6 +6,7 @@ require 'app/game'
 require 'app/grid'
 require 'app/player'
 require 'app/token'
+require 'app/symbol'
 require 'app/application'
 require 'view/show'
 

@@ -11,34 +11,12 @@ class Application
       
       # --- Create new game inastance ---
       game = Game.new()
-      # Receive palyers ---
-      game.recieve_players
+      game.play
       
-      # --- Start the part
-      game.start_game
-      
-      until (game.part_is_finished || game.grid.has_tokens_aligned?)
-        # --- Show grid ---
-        Show.new(game.grid).show_grid
-        
-        # --- one of the two player is playing
-        game.a_player_is_playing
-      end
-
-      if (game.part_is_finished)
-        puts "DRAW!!!"
-      else
-        if !game.players[0].status
-          puts "Congratulations #{game.players[0].name}! you won"
-        else
-          puts "Congratulations #{game.players[1].name}! you won"
-        end
-      end
-
       # Ask to launch a new part ---
       begin
         print 'Another part ? [y/n] '
-        answer = gets.chomp
+        answer = gets.chomp.downcase
       end while (answer != 'y' && answer != 'n')
     end while (answer == 'y')
   end
